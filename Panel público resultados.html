@@ -13,15 +13,25 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
- <script>
-        // JavaScript to force reload
+ <title>Forzar Recarga Dos Veces</title>
+    <script>
+        // JavaScript para forzar recarga dos veces
         window.onload = function() {
-            if (!sessionStorage.getItem('hasReloaded')) {
-                sessionStorage.setItem('hasReloaded', 'true');
+            // Obtiene el contador de recargas de sessionStorage
+            let reloadCount = sessionStorage.getItem('reloadCount');
+
+            if (!reloadCount) {
+                // Si no existe, inicializa el contador en 1
+                sessionStorage.setItem('reloadCount', '1');
+                location.reload();
+            } else if (reloadCount === '1') {
+                // Si el contador es 1, incrementa a 2 y recarga
+                sessionStorage.setItem('reloadCount', '2');
                 location.reload();
             }
+            // Si el contador es 2, no hace nada (ya se recargó dos veces)
         };
-</script>
+    </script>
 
 	
 <title>Panel público resultados</title>
